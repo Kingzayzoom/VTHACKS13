@@ -1,53 +1,59 @@
 .navbar {
-    height: 7.5dvh;
+    position: fixed;       /* lock it to the viewport */
+    top: 0;
+    left: 0;
     width: 100%;
-    background-color: rgba(11, 11, 11, 0.96);
+    height: 7.5dvh;
+    background-color: rgba(11, 11, 11, 0.98);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 2rem;
+    padding: 0 3rem;
     color: #e1e1e1;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
+    z-index: 9999;          /* keep it above everything */
 }
-
 #VT {
     background-color: #5A262B;
     font-weight: 900;
     border-radius: 30%;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 3.2rem;
+    height: 3.2rem;
     display: flex;
     align-items: center;
     justify-content: center;
-
+    font-size: 1.2rem;
 }
+
 .logoContainer {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    gap: 1rem;
     flex: 1;
 }
 
 .linksContainer {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
     justify-content: center;
     flex: 1;
+    font-size: 1.05rem;
 }
 
 .buttonsContainer {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
     justify-content: flex-end;
     flex: 1;
 }
 
 .button {
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.5rem 1.25rem;
-    border-radius: 0.5rem;
+    font-size: 1.05rem;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.75rem;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
