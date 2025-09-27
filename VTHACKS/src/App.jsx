@@ -6,13 +6,14 @@ import Hero from './Comps/Home/heroSection/heroSection.jsx';
 import Application from './Comps/Home/applicationProcess/applicationProcess.jsx';
 import Footer from './Comps/Home/footer/footer.jsx';
 import Dash from './Comps/Dashboard/mainDash.jsx';
+import LogIn from './Comps/LogIn/logIn.jsx';
+import ScrollToTop from './Comps/ScrollToTop.jsx';
 
 function App() {
     return (
         <Router>
-
+            <ScrollToTop />
             <Routes>
-                {/* Home Page */}
                 <Route path="/" element={
                     <>
                         <Navbar />
@@ -21,12 +22,10 @@ function App() {
                         <Footer />
                     </>
                 } />
-
-                {/* Other Pages */}
                 <Route path="/dashboard" element={<Dash />} />
                 <Route path="/application" element={<h2>Application Page</h2>} />
                 <Route path="/residents" element={<h2>Residents Page</h2>} />
-                <Route path="/login" element={<h2>Login Page</h2>} />
+                <Route path="/login" element={<LogIn />} />
             </Routes>
         </Router>
     );

@@ -1,0 +1,90 @@
+.content {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fcf8f7;
+    font-family: 'Inter', sans-serif;
+}
+
+.logContainer {
+    background: white;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+.loginTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #1a1a1a;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.formGroup label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #333;
+}
+
+.formGroup input {
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formGroup input:focus {
+    border: 1px solid #e66b2f;
+    box-shadow: 0 0 0 3px rgba(230, 107, 47, 0.2);
+    outline: none;
+}
+
+.loginButton {
+    background: #6A2E33;
+    color: white;
+    padding: 0.9rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.loginButton:hover {
+    background: #5A262B;
+    transform: translateY(-2px);
+}
+
+.altText {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.altText a {
+    color: #e66b2f;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.altText a:hover {
+    text-decoration: underline;
+}

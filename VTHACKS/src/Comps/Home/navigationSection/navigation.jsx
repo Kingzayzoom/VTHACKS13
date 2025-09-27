@@ -1,5 +1,6 @@
 import './navigation.css';
 import { useNavigate } from 'react-router-dom';
+import VTECH from '../../../assets/Vtech.png';
 
 export default function Navigation() {
     const navigate = useNavigate();
@@ -7,8 +8,9 @@ export default function Navigation() {
     return (
         <nav className="navbar">
             <div className="logoContainer" onClick={() => navigate("/")}>
-                <div id="VT"><h3>VT</h3></div>
-                <h3>Housing Portal</h3>
+                <div id="VT">
+                    <img src={VTECH} alt="VT Logo" />
+                </div>
             </div>
 
             <ul className="linksContainer">

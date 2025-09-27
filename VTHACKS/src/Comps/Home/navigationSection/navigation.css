@@ -1,5 +1,5 @@
 .navbar {
-    position: fixed;       /* lock it to the viewport */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -13,20 +13,23 @@
     color: #e1e1e1;
     font-weight: 300;
     font-size: 1.1rem;
-    z-index: 9999;          /* keep it above everything */
+    z-index: 9999;
 }
 #VT {
-    background-color: #5A262B;
-    font-weight: 900;
-    border-radius: 30%;
-    width: 1.8rem;
-    height: 1.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.8rem;
+    height: 40px;
+    width: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
 }
-
+#VT img {
+    height: 100%;
+    width: auto;
+    display: block;
+}
 .logoContainer {
     display: flex;
     align-items: center;
