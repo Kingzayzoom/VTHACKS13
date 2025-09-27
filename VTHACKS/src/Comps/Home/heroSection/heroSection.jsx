@@ -1,5 +1,5 @@
 import './heroSection.css'
-import heroBackground from '../assets/hero-sectionbackground.jpeg'
+import heroBackground from '../../../assets/hero-sectionbackground.jpeg'
 
 export default function HeroSection() {
     return (

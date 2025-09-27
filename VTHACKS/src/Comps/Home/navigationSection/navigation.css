@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 7.5dvh;
+    height: 7dvh;
     background-color: rgba(11, 11, 11, 0.98);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     display: flex;
@@ -11,7 +11,7 @@
     justify-content: space-between;
     padding: 0 3rem;
     color: #e1e1e1;
-    font-weight: 600;
+    font-weight: 300;
     font-size: 1.1rem;
     z-index: 9999;          /* keep it above everything */
 }
@@ -19,12 +19,12 @@
     background-color: #5A262B;
     font-weight: 900;
     border-radius: 30%;
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 1.8rem;
+    height: 1.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
 }
 
 .logoContainer {
@@ -40,6 +40,14 @@
     justify-content: center;
     flex: 1;
     font-size: 1.05rem;
+    cursor: pointer;
+}
+.linksContainer li {
+    transition: 1s;
+
+}
+.linksContainer li:hover {
+    color: #5A262B;
 }
 
 .buttonsContainer {

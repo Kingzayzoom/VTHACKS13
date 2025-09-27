@@ -7,15 +7,16 @@
     align-items: center;
     background:
             linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-            url('../assets/hero-sectionbackground.jpeg') center/cover no-repeat;
-    padding-top: 7.5dvh;  /* offset for navbar */
+            url('../../../assets/hero-sectionbackground.jpeg') center/cover no-repeat;
+    padding-top: 7.5dvh;
+    overflow: hidden;
 }
-
 
 .overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 1s ease forwards;
 }
 
 .heroContent {
@@ -35,6 +36,7 @@
     align-items: center;
 }
 
+/* ICON */
 #housingIcon {
     display: inline-flex;
     align-items: center;
@@ -43,38 +45,48 @@
     padding: 0.6rem 1.5rem;
     border-radius: 999px;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 400;
     color: rgba(236, 109, 119, 0.3);
     border: 1px solid rgba(184, 76, 72, 0.4);
     backdrop-filter: blur(6px);
     -webkit-backdrop-filter: blur(6px);
     margin-bottom: 2.5rem;
     transition: transform 0.3s ease;
+    opacity: 0;
+    animation: slideDown 0.8s ease forwards;
+    animation-delay: 0.3s;
 }
-
 #housingIcon:hover {
     transform: scale(1.05);
 }
-
 #housingIcon svg {
     color: #e66b2f;
     font-size: 1.25rem;
 }
 
+/* HEADINGS */
 .heroContentText h1 {
     font-size: 7rem;
+    text-overflow: clip;
     font-weight: 800;
     line-height: 1.1;
     margin: 0;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.6s;
 }
 
 #excellence {
     color: #e66b2f;
     font-size: 8rem;
-    font-weight: 300;
+    font-weight: 200;
     margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 0.9s;
 }
 
+/* PARAGRAPH */
 .heroContentText p {
     margin-top: 2rem;
     font-size: 1.4rem;
@@ -83,28 +95,38 @@
     max-width: 850px;
     margin-left: auto;
     margin-right: auto;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.2s;
 }
 
+/* BUTTONS */
 .heroButton {
     display: flex;
     gap: 2.5rem;
     justify-content: center;
     margin-top: 3.5rem;
     width: 100%;
+    opacity: 0;
+    animation: fadeUp 1s ease forwards;
+    animation-delay: 1.5s;
+}
+
+#apply, #view {
+    padding: 1rem 2rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.3s ease;
+    height: 3.5rem;
+    width: 16rem;
+    font-size: 1.1rem;
 }
 
 #apply {
     background-color: #6A2E33;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.6rem;
-    font-weight: 600;
     border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.3s ease;
-    height: 3.5rem;
-    width: 16rem;
-    font-size: 1.1rem;
 }
 #apply:hover {
     background-color: #5A262B;
@@ -114,18 +136,24 @@
 #view {
     background-color: transparent;
     color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.6rem;
-    font-weight: 600;
     border: 2px solid #e66b2f;
-    cursor: pointer;
-    transition: all 0.3s ease, transform 0.3s ease;
-    height: 3.5rem;
-    width: 16rem;
-    font-size: 1.1rem;
 }
 #view:hover {
     background-color: #e66b2f;
     color: black;
     transform: translateY(-4px) scale(1.03);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
 }

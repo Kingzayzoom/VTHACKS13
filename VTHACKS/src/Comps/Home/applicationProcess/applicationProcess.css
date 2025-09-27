@@ -1,0 +1,209 @@
+.applicationProcess {
+    height: 100vh;
+    width: 100%;
+    padding: 4rem 8rem;
+    background: #fcf8f7;
+    color: #1a1a1a;
+    font-family: 'Inter', sans-serif;
+}
+
+.processTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.processSubtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 3rem;
+}
+
+.processContainer {
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.stepsSection {
+    flex: 1;
+}
+
+.step {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stepNumber {
+    background: #5a262b1a;
+    color: #5A262B;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+}
+
+.stepNumber.outlined {
+    border: 2px solid #000;
+    background: transparent;
+    color: #000;
+}
+
+.stepNumber.orange {
+    border: 2px solid #e66b2f;
+    background: transparent;
+    color: #e66b2f;
+}
+
+.step h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.step p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.beginButton {
+    background: #5A262B;
+    color: white;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+.beginButton:hover {
+    background: #451d22;
+    transform: translateY(-3px);
+}
+
+.statusSection {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.statusCard, .timelineCard {
+    background: #fff7f5;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.statusHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.statusHeader h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.badge {
+    background: #e1e1e1;
+    color: #333;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.statusMeta {
+    font-size: 0.85rem;
+    color: #666;
+    margin: 0.5rem 0 1rem;
+}
+
+.statusCard ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.statusCard li {
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+}
+
+.statusCard li.complete {
+    color: green;
+}
+
+.statusCard li.progress {
+    color: orange;
+}
+
+.statusCard li.pending {
+    color: #999;
+}
+
+.timelineCard h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.timelineCard .subtext {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.timelineRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.95rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.timelineRow:last-child {
+    border-bottom: none;
+}
+
+/* SCROLL ANIMATIONS */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.animate.slideLeft {
+    animation: slideLeft 0.8s ease forwards;
+}
+.animate.slideRight {
+    animation: slideRight 0.8s ease forwards;
+}
+.animate.fadeDown {
+    animation: fadeDown 0.8s ease forwards;
+}
+
+@keyframes slideLeft {
+    from { opacity: 0; transform: translateX(-60px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideRight {
+    from { opacity: 0; transform: translateX(60px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
