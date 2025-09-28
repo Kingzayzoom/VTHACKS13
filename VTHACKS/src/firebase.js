@@ -13,8 +13,6 @@ const firebaseConfig = {
   measurementId: "G-RV7EZS2S1H"
 };
 
-// 🔹 Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// 🔹 Export auth instance (for login/signup)
 export const auth = getAuth(app);
