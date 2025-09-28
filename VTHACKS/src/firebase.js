@@ -2,9 +2,9 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
-
+// Use environment variables
 const firebaseConfig = {
-  apiKey: "AIzaSyBfVCTfw1zS1z2Tdiy_7e5CrRrC1p9itd0",
+  apiKey: import.meta.env.FIREBASE_API,
   authDomain: "authentication-f01d0.firebaseapp.com",
   projectId: "authentication-f01d0",
   storageBucket: "authentication-f01d0.firebasestorage.app",
@@ -13,8 +13,8 @@ const firebaseConfig = {
   measurementId: "G-RV7EZS2S1H"
 };
 
-// 🔹 Initialize Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// 🔹 Export auth instance (for login/signup)
+// Export auth instance
 export const auth = getAuth(app);
