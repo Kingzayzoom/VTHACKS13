@@ -1,10 +1,28 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { useState, useEffect } from "react";
+// LeafletMap.jsx
+import { MapContainer, TileLayer, Marker, Popup, Circle, GeoJSON } from "react-leaflet";
+import { useEffect, useMemo, useState, useRef } from "react";
 import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+import quadrantsUrl from "../../assets/Service_Quadrants.geojson?url";
+
+const BLACKSBURG = [37.2296, -80.4139];
+const RADIUS_METERS = 5000;
 
 export default function LeafletMap() {
-    const [userLocation, setUserLocation] = useState([37.2296, -80.4139]); // default VT
+    const [userLocation, setUserLocation] = useState(BLACKSBURG);
+    const [data, setData] = useState(null);          // FeatureCollection
+    const geoRef = useRef();
 
+    // load the GeoJSON
+    useEffect(() => {
+        fetch(quadrantsUrl)
+            .then((r) => r.json())
+            .then(setData)
+            .catch((e) => console.error("GeoJSON load failed:", e));
+    }, []);
+
+    // geolocate
     useEffect(() => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((pos) => {
@@ -13,23 +31,66 @@ export default function LeafletMap() {
         }
     }, []);
 
+    // radius check
+    const inside = useMemo(() => {
+        const toRad = (x) => (x * Math.PI) / 180;
+        const [lat1, lon1] = BLACKSBURG;
+        const [lat2, lon2] = userLocation;
+        const R = 6371000;
+        const dLat = toRad(lat2 - lat1);
+        const dLon = toRad(lon2 - lon1);
+        const a =
+            Math.sin(dLat / 2) ** 2 +
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
+        const d = 2 * R * Math.asin(Math.sqrt(a));
+        return d <= RADIUS_METERS;
+    }, [userLocation]);
+
     const userIcon = new L.Icon({
-        iconUrl: "https://cdn-icons-png.flaticon.com/512/64/64113.png", // can replace with custom
+        iconUrl: "https://cdn-icons-png.flaticon.com/512/64/64113.png",
         iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -28],
     });
 
+    const style = (feature) => ({
+        color: "#111827",
+        weight: 2,
+        fillColor: "#861F41",
+        fillOpacity: 0.25,
+    });
+
+    const onEach = (feature, layer) => {
+        const p = feature.properties || {};
+        layer.bindPopup(
+            `<strong>${p.Quadrant ?? "Quadrant"}</strong><br/>
+       Trash: ${p.Trash ?? "–"}<br/>
+       Recycle: ${p.Recycle ?? "–"}`
+        );
+        layer.on({
+            mouseover: (e) => e.target.setStyle({ weight: 3, fillOpacity: 0.35 }),
+            mouseout: (e) => geoRef.current?.resetStyle(e.target),
+        });
+    };
+
     return (
-        <MapContainer
-            center={userLocation}
-            zoom={14}
-            style={{ width: "100%", height: "100%" }}
-        >
+        <MapContainer center={BLACKSBURG} zoom={13} style={{ width: "100%", height: "100%" }}>
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
+
+
+            {/* Quadrants */}
+            {data && (
+                <GeoJSON ref={geoRef} data={data} style={style} onEachFeature={onEach} />
+            )}
+
+            {/* User marker */}
             <Marker position={userLocation} icon={userIcon}>
-                <Popup>You are here</Popup>
+                <Popup>
+                    {inside ? "You're within 5 km of Blacksburg" : "You're outside the 5 km radius"}
+                </Popup>
             </Marker>
         </MapContainer>
     );
