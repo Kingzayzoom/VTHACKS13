@@ -6,7 +6,8 @@ import Hero from './Comps/Home/heroSection/heroSection.jsx';
 import Application from './Comps/Home/applicationProcess/applicationProcess.jsx';
 import Footer from './Comps/Home/footer/footer.jsx';
 import Dash from './Comps/Dashboard/mainDash.jsx';
-import LogIn from './Comps/LogIn/logIn.jsx';
+import LogIn from './Comps/LogIn/LogIn.jsx';
+import SignUp from './Comps/LogIn/SignUp.jsx';
 import ScrollToTop from './Comps/ScrollToTop.jsx';
 import HousingListings from './Comps/Dashboard/HousingListings.jsx'; // New component
 
@@ -32,6 +33,7 @@ function App() {
                 <Route path="/application" element={<h2>Application Page</h2>} />
                 <Route path="/residents" element={<h2>Residents Page</h2>} />
                 <Route path="/login" element={<LogIn />} />
+                <Route path="/signup" element={<SignUp />} />
             </Routes>
         </Router>
     );
