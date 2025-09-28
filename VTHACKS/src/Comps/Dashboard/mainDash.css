@@ -390,3 +390,53 @@ body {
     .linksContainer{gap:1.1rem}
     .brand span{display:none}
 }
+
+.houseCard {
+    background: #0f0f0f;
+    border: 1px solid rgba(255,255,255,.22);
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    box-shadow: 0 6px 18px rgba(255,255,255,.18), 0 0 0 1px rgba(255,255,255,.10);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    opacity: 0;
+    animation: fadeScaleUp .6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeScaleUp {
+    from {
+        transform: translateY(25px) scale(0.96);
+        opacity: 0;
+        filter: blur(4px);
+    }
+    60% {
+        transform: translateY(-4px) scale(1.02);
+        opacity: 0.9;
+        filter: blur(0);
+    }
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.houseCard:nth-child(1) { animation-delay: .05s; }
+.houseCard:nth-child(2) { animation-delay: .15s; }
+.houseCard:nth-child(3) { animation-delay: .25s; }
+.houseCard:nth-child(4) { animation-delay: .35s; }
+.houseCard:nth-child(5) { animation-delay: .45s; }
+.houseCard:nth-child(6) { animation-delay: .55s; }
+.houseCard:nth-child(7) { animation-delay: .65s; }
+.houseCard:nth-child(8) { animation-delay: .75s; }
+.houseCard:nth-child(9) { animation-delay: .85s; }
+.houseCard:nth-child(10) { animation-delay: .95s; }
+
+.houseCard:hover {
+    transform: translateY(-4px) scale(1.02);
+    border-color: rgba(255,255,255,.35);
+    box-shadow: 0 16px 36px rgba(255,255,255,.28),
+    0 0 0 1px rgba(255,255,255,.16);
+}
