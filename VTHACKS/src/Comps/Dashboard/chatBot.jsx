@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 
 export default function ChatBot() {
     const [chat, setChat] = useState(false);
+    const [closing, setClosing] = useState(false);
     const [input, setInput] = useState("");
     const [messages, setMessages] = useState([
         { sender: "HokieBot", text: "Welcome to HokieBot! How may I help you?" }
@@ -23,15 +24,22 @@ export default function ChatBot() {
 
     const hasUserMessage = messages.some((msg) => msg.sender === "You");
 
+    const handleClose = () => {
+        setClosing(true);
+        setTimeout(() => {
+            setChat(false);
+            setClosing(false);
+        }, 400);
+    };
+
     return (
         <div className="chatWrapper">
             {chat ? (
-                <div className="chatWindow slideUp">
+                <div className={`chatWindow ${closing ? "slideDown" : "slideUp"}`}>
                     <div className="chatHeader">
                         <span>HokieBot</span>
-                        <button onClick={() => setChat(false)}>−</button>
+                        <button onClick={handleClose}>−</button>
                     </div>
-
                     <div className="messages">
                         {messages.map((msg, idx) => (
                             <div
@@ -43,7 +51,6 @@ export default function ChatBot() {
                         ))}
                         <div ref={messagesEndRef} />
                     </div>
-
                     {!hasUserMessage && (
                         <div className="options">
                             <button>Schedule Tour</button>
@@ -55,7 +62,6 @@ export default function ChatBot() {
                             <button>Current Resident</button>
                         </div>
                     )}
-
                     <form className="chatForm" onSubmit={handleSend}>
                         <input
                             type="text"
