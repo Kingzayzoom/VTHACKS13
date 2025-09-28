@@ -53,7 +53,7 @@ if response.status_code == 200:
         })
 
     # Save all listings to a single JSON file
-    with open("blacksburg_listings.json", "w", encoding="utf-8") as f:
+    with open("../src/assets/blacksburg_listings.json", "w", encoding="utf-8") as f:
         json.dump(listings, f, indent=4)
 
     print("Saved all Blacksburg rental listings to blacksburg_listings.json")
