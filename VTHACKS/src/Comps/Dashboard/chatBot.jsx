@@ -74,7 +74,7 @@ export default function ChatBot() {
                 </div>
             ) : (
                 <div className="chatLauncher" onClick={() => setChat(true)}>
-                    💬 Chat
+                    💬
                 </div>
             )}
         </div>

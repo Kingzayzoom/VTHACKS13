@@ -440,3 +440,54 @@ body {
     box-shadow: 0 16px 36px rgba(255,255,255,.28),
     0 0 0 1px rgba(255,255,255,.16);
 }
+
+.side-filters {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 10px;
+    background: #141414;
+    box-shadow: 0 4px 12px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.05);
+    animation: fadeScaleUp .5s cubic-bezier(0.16,1,0.3,1);
+}
+
+.side-filters h3 {
+    margin: 0 0 .4rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--vt-light);
+}
+
+.side-filters label {
+    display: flex;
+    flex-direction: column;
+    font-size: .85rem;
+    color: var(--vt-muted);
+    gap: .25rem;
+}
+
+.side-filters input,
+.side-filters select {
+    padding: .45rem .55rem;
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 8px;
+    background: #0a0a0a;
+    color: #fff;
+    font-size: .92rem;
+}
+
+.side-filters input:focus,
+.side-filters select:focus {
+    outline: none;
+    border-color: var(--vt-maroon);
+    box-shadow: 0 0 0 2px rgba(134,31,65,.35);
+}
+
+.side-filters .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .6rem;
+}
