@@ -9,9 +9,8 @@ API_KEY = os.environ.get("RENTCAST_API_KEY")
 if not API_KEY:
     raise ValueError("Please set the RENTCAST_API_KEY environment variable.")
 
-# Search by city instead of address
-CITY = "Blacksburg"
-STATE = "VA"
+# Base property address (VT campus)
+VT_ADDRESS = "800 Drillfield Dr, Blacksburg, VA 24061"
 
 # Common headers
 headers = {
@@ -19,15 +18,15 @@ headers = {
     "X-Api-Key": API_KEY
 }
 
-# Rental Listings Endpoint (all rentals in Blacksburg)
+# Rental Listings Endpoint (off-campus rentals)
 listings_url = "https://api.rentcast.io/v1/listings/rental/long-term"
 listings_params = {
-    "city": CITY,
-    "state": STATE,
-    "limit": 100,  # number of listings per request (max depends on API)
+    "address": VT_ADDRESS,
+    "radius": 5,  # miles around VT campus
+    "limit": 20,
     "propertyType": "Apartment,Townhouse",  # filter by type
-    "bedrooms": "1,2,3,4,5 6",
-    "bathrooms": "1,2, 3, 4, 5, 6"
+    "bedrooms": "1,2,3",
+    "bathrooms": "1,2"
 }
 
 response = requests.get(listings_url, headers=headers, params=listings_params)
@@ -53,9 +52,9 @@ if response.status_code == 200:
         })
 
     # Save all listings to a single JSON file
-    with open("blacksburg_listings.json", "w", encoding="utf-8") as f:
+    with open("vt_listings.json", "w", encoding="utf-8") as f:
         json.dump(listings, f, indent=4)
 
-    print("Saved all Blacksburg rental listings to blacksburg_listings.json")
+    print("Saved VT rental listings to vt_listings.json")
 else:
     print(f"Error {response.status_code}: {response.text}")
